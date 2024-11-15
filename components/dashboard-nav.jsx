@@ -77,7 +77,7 @@ export const DashboardNav = () => {
           </div>
         </nav>
       </header>
-      <DashboardSideBar />
+
       {/* small screen */}
 
       <div className="-mt-px">

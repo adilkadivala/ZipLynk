@@ -16,7 +16,7 @@ const sidebarPages = [
   },
 ];
 
-const DashboardSideBar = () => {
+export const DashboardSideBar = () => {
   return (
     <div
       className="absolute inset-y-0 start-0 z-[60]
@@ -79,5 +79,3 @@ const DashboardSideBar = () => {
     </div>
   );
 };
-
-export default DashboardSideBar;
