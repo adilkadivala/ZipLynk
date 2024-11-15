@@ -15,6 +15,7 @@ module.exports = {
       },
       backgroundImage: {
         hero_background: "url('background.svg')",
+        hero_background_dark: "url('backgroundDark.svg')",
       },
     },
   },
