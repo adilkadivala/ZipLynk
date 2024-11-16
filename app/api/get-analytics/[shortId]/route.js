@@ -1,32 +1,40 @@
 import { connectDB } from "@/db/connection";
 import URL from "@/models/url";
+import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
   await connectDB();
 
   try {
-    const { searchParams } = params;
-    const shortId = searchParams.get("shortId");
+    const { shortId } = await params;
 
     const result = await URL.findOne({ shortId });
 
+    console.log(result);
+
     if (!result) {
-      return new Response(JSON.stringify({ error: "Short URL not found" }), {
-        status: 404,
-      });
+      return NextResponse.json(
+        { error: "Short URL not found" },
+        {
+          status: 404,
+        }
+      );
     }
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         totalClicks: result.visitHistory.length,
         analytics: result.visitHistory,
-      }),
+      },
       { status: 200 }
     );
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-    });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      {
+        status: 500,
+      }
+    );
   }
 }

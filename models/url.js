@@ -7,7 +7,6 @@ const urlSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-
     redirectUrl: {
       type: String,
       required: true,
@@ -17,8 +16,6 @@ const urlSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
-
-const URL = mongoose.models.URL || mongoose.model("url", urlSchema);
+const URL = mongoose.models.URL || mongoose.model("URL", urlSchema);
 
 export default URL;
