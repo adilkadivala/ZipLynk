@@ -16,14 +16,17 @@ const Dashboard = () => {
     { id: "7", name: "user", message: "new user", actions: "edit" },
     { id: "8", name: "user", message: "new user", actions: "edit" },
     { id: "9", name: "user", message: "new user", actions: "edit" },
-    { id: "10", name: "user", message: "new user", actions: "edit" },
+    { id: "11", name: "user", message: "new user", actions: "edit" },
+    { id: "12", name: "user", message: "new user", actions: "edit" },
+    { id: "13", name: "user", message: "new user", actions: "edit" },
+    { id: "14", name: "user", message: "new user", actions: "edit" },
   ];
 
   return (
     <>
       <div>Dashboard page</div>
       {Table_Row.length > 0 ? (
-        <div className="p-10">
+        <div>
           <Table
             TABLE_HEAD={Table_Head}
             TABLE_ROWS={Table_Row}

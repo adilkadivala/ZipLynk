@@ -5,19 +5,18 @@ import Link from "next/link";
 import { ChevronRight, PanelRightOpen, Search, User } from "lucide-react";
 
 // components imports
-import DashboardSideBar from "@/components/dashboard-sidebar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export const DashboardNav = () => {
   return (
     <>
-      <header className="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 lg:ps-[260px] dark:bg-neutral-800 dark:border-neutral-700">
-        <nav className="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
-          <div className="me-5 lg:me-0 lg:hidden">
+      <header className="sticky top-0 inset-x-0 z-10 flex flex-wrap md:justify-start md:flex-nowrap w-full bg-white border-b text-sm py-2.5 dark:bg-neutral-800 dark:border-neutral-700">
+        <nav className="sm:px-6 flex items-center justify-between md:justify-evenly basis-full w-full mx-auto">
+          <div className=" lg:w-[13.5rem] w-20  border-r ">
             {/* <!-- Logo --> */}
             <Link
-              className="flex items-center justify-center gap-5 rounded-xl text-xl font-semibold"
+              className="flex items-center md:justify-start justify-center gap-5 rounded-xl text-xl font-semibold"
               href="/"
             >
               <Image
@@ -26,15 +25,16 @@ export const DashboardNav = () => {
                 width={35}
                 height={35}
               />
+              <span className="hidden lg:block">ZipLynk</span>
             </Link>
             {/* <!-- End Logo --> */}
           </div>
 
-          <div className="w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3">
-            <div className="hidden md:block">
+          <div className=" flex flex-1 items-center md:justify-between justify-end gap-x-1 md:gap-x-3">
+            <div className="hidden md:block ms-10">
               {/* <!-- Search Input --> */}
-              <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
+              <div className="relative ">
+                <div className="absolute inset-y-0  flex items-center ps-3.5">
                   <Search size={15} />
                 </div>
                 <Input
@@ -46,18 +46,11 @@ export const DashboardNav = () => {
             </div>
 
             <div className="flex flex-row items-center justify-end gap-1">
-              <div className="hs-dropdown [--placement:bottom-right] relative inline-flex">
+              <div className="hs-dropdown relative inline-flex">
                 <Button
                   type="button"
                   className="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full"
                 >
-                  {/* <Image
-                    className="shrink-0 size-[38px] rounded-full"
-                    alt="Avatar"
-                    src="/"
-                    width={20}
-                    height={20}
-                  /> */}
                   <User />
                 </Button>
 
@@ -77,7 +70,6 @@ export const DashboardNav = () => {
           </div>
         </nav>
       </header>
-
       {/* small screen */}
 
       <div className="-mt-px">
