@@ -1,11 +1,11 @@
 import { connectDB } from "@/db/connection";
-import { URL } from "@/models/url";
+import URL from "@/models/url";
 
-export async function GET(req) {
+export async function GET(req, { params }) {
   await connectDB();
 
   try {
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = params;
     const shortId = searchParams.get("shortId");
 
     const result = await URL.findOne({ shortId });

@@ -1,5 +1,5 @@
 import { connectDB } from "@/db/connection";
-import { URL } from "@/models/url";
+import URL from "@/models/url";
 
 export async function GET(req, { params }) {
   await connectDB();

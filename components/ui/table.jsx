@@ -1,14 +1,17 @@
 import { useId } from "react";
 
-export const Table = ({ TABLE_HEAD, TABLE_ROWS }) => {
+export const Table = ({ TABLE_HEAD, TABLE_ROWS, className }) => {
   const elementId = useId();
 
   return (
     <table
-      className="w-full min-w-max table-auto text-left border border-slate-200 "
+      className={`${className}  min-w-max table-auto border border-slate-200`}
       id={elementId}
     >
       <thead>
+        <tr>
+          <th>Your Data</th>
+        </tr>
         <tr>
           {TABLE_HEAD?.map((head) => (
             <th
@@ -21,15 +24,12 @@ export const Table = ({ TABLE_HEAD, TABLE_ROWS }) => {
         </tr>
       </thead>
       <tbody>
-        {TABLE_ROWS?.map(({ id, name, message }, index) => {
-          const isLast = index === TABLE_ROWS.length - 1;
-          const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
-
+        {TABLE_ROWS?.map(({ id, name, message }) => {
           return (
-            <tr key={id}>
-              <td className={classes}>{name}</td>
-              <td className={`${classes} bg-blue-gray-50/50`}>{message}</td>
-              <td className={`${classes} bg-blue-gray-50/50`}>Edit</td>
+            <tr key={id} className="border border-slate-300 text-center">
+              <td>{name}</td>
+              <td className={` bg-blue-gray-50/50`}>{message}</td>
+              <td className={` bg-blue-gray-50/50`}>Edit</td>
             </tr>
           );
         })}

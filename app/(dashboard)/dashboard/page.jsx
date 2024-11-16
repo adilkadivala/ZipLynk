@@ -6,7 +6,7 @@ import { Table } from "@/components/ui/table";
 
 const Dashboard = () => {
   const Table_Head = ["Name", "Message", "Actions"];
-  const Table_Row = [
+  const Table_Row = [ 
     { id: "1", name: "user", message: "new user", actions: "edit" },
     { id: "2", name: "user", message: "new user", actions: "edit" },
     { id: "3", name: "user", message: "new user", actions: "edit" },
@@ -24,13 +24,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>Dashboard page</div>
       {Table_Row.length > 0 ? (
         <div>
           <Table
             TABLE_HEAD={Table_Head}
             TABLE_ROWS={Table_Row}
             key={Table_Row.id}
+            className="w-1/2"
           />
         </div>
       ) : (
