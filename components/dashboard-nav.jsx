@@ -2,7 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 // third-party imports
-import { ChevronRight, PanelRightOpen, Search, User } from "lucide-react";
+import {
+  ChevronRight,
+  Loader2,
+  PanelRightOpen,
+  Search,
+} from "lucide-react";
+import { UserButton, ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
 
 // components imports
 import { Input } from "@/components/ui/input";
@@ -47,23 +53,12 @@ export const DashboardNav = () => {
 
             <div className="flex flex-row items-center justify-end gap-1">
               <div className="hs-dropdown relative inline-flex">
-                <Button
-                  type="button"
-                  className="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full"
-                >
-                  <User />
-                </Button>
-
-                <div className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60">
-                  <div className="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700">
-                    <p className="text-sm text-gray-500 dark:text-neutral-500">
-                      Signed in as
-                    </p>
-                    <p className="text-sm font-medium text-gray-800 dark:text-neutral-200">
-                      james@site.com
-                    </p>
-                  </div>
-                </div>
+                <ClerkLoaded>
+                  <UserButton />
+                </ClerkLoaded>
+                <ClerkLoading>
+                  <Loader2 className="size-8 animate-spin text-slate-400" />
+                </ClerkLoading>
               </div>
               {/* <!-- End Dropdown --> */}
             </div>

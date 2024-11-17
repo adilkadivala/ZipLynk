@@ -1,4 +1,3 @@
-"use client";
 // library imports
 import { useState } from "react";
 
