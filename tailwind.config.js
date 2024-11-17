@@ -9,13 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#66cc00",
+        primary: "#57D131",
         secondry: "#ccff99",
-        greenDark: "#43123c",
-      },
-      backgroundImage: {
-        hero_background: "url('background.svg')",
-        hero_background_dark: "url('backgroundDark.svg')",
+        primaryText: "#406661",
+        whitePrimary: "#F5F5F5",
       },
     },
   },

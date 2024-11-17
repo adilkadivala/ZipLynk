@@ -1,55 +1,89 @@
-import { ChevronRight } from "lucide-react";
-import { Button } from "./ui/button";
-import Link from "next/link";
+"use client";
 
-const Hero = () => {
+import { useEffect } from "react";
+
+export default function Hero() {
+  useEffect(() => {
+    const leftBeams = document.querySelectorAll(".beam-left");
+    const rightBeams = document.querySelectorAll(".beam-right");
+
+    // Array to store individual beam Y positions
+    const leftPosY = new Array(leftBeams.length).fill(0);
+    const rightPosY = new Array(rightBeams.length).fill(window.innerHeight);
+
+    // Array to store individual beam speeds for randomness
+    const leftSpeeds = leftPosY.map(() => Math.random() * 0.5 + 0.2);
+    const rightSpeeds = rightPosY.map(() => Math.random() * 0.5 + 0.2);
+
+    const moveLeftBeams = () => {
+      leftPosY.forEach((pos, index) => {
+        leftPosY[index] += leftSpeeds[index];
+
+        if (leftPosY[index] >= window.innerHeight) leftPosY[index] = 0;
+
+        leftBeams[index].style.transform = `translateY(${leftPosY[index]}px)`;
+      });
+
+      requestAnimationFrame(moveLeftBeams);
+    };
+
+    const moveRightBeams = () => {
+      rightPosY.forEach((pos, index) => {
+        rightPosY[index] -= rightSpeeds[index];
+
+        if (rightPosY[index] <= 0) rightPosY[index] = window.innerHeight;
+
+        rightBeams[index].style.transform = `translateY(${rightPosY[index]}px)`;
+      });
+
+      requestAnimationFrame(moveRightBeams);
+    };
+
+    moveLeftBeams();
+    moveRightBeams();
+  }, []);
+
   return (
-    <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('/background.svg')] dark:before:bg-[url('/backgroundDark.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
-        <div className="flex justify-center">
-          <span
-            className="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 px-2 py-1 rounded-full "
-            href="#"
-          >
-            EASY to - share for marketing
-          </span>
-        </div>
+    <div className="min-h-screen bg-whitePrimary">
+      <main>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Beam containers */}
+          <div className="absolute left-0 w-1/2 h-full overflow-hidden">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-[0.5px] h-16 bg-gradient-to-t from-primary to-secondry beam-left"
+                style={{ left: `${i * 10}%` }}
+              ></div>
+            ))}
+          </div>
 
-        <div className="mt-5 max-w-2xl text-center mx-auto">
-          <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-            Let's ZipLink {""}
-            <span className="bg-clip-text bg-gradient-to-tl from-secondry to-primary text-transparent">
-              Together
-            </span>
-          </h1>
-        </div>
+          <div className="absolute right-0 w-1/2 h-full overflow-hidden">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-[0.5px] h-16 bg-gradient-to-t from-secondry to-primary beam-right"
+                style={{ right: `${i * 10}%` }}
+              ></div>
+            ))}
+          </div>
 
-        <div className="mt-5 max-w-3xl text-center mx-auto">
-          <p className="text-lg text-gray-600 dark:text-neutral-400">
-            ZipLink is a creating shortUrl From long-one, It's easy to use,
-            and tracking analytics to events of Links 😉, get chance to try it !!
-            absolutely Free 🎉.
-          </p>
-        </div>
-
-        <div className="mt-8 gap-3 flex justify-center">
-          <Link
-            className="inline-flex justify-center items-center gap-x-3 text-center text-greenDark bg-gradient-to-tl from-secondry to-primary hover:from-primary hover:to-secondry border border-transparent text-sm font-medium rounded-md focus:outline-none focus:from-primary focus:to-secondry py-3 px-4"
-            href="/dashboard"
-          >
-            Get started
-            <ChevronRight />
-          </Link>
-          <Button
-            type="button"
-            className="relative group p-2 ps-3 inline-flex items-center gap-x-2 text-sm font-mono rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-          >
-            Book a demo
-          </Button>
-        </div>
-      </div>
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h4 className="text-5xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryText">
+              Supercharge your URLs with ZipLynk
+            </h4>
+            <p className="text-xl md:text-2xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primaryText to-primary">
+              Streamline your processes with our cutting-edge SaaS solution
+            </p>
+            <a
+              href="#"
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-colors"
+            >
+              Start Your Free Trial
+            </a>
+          </div>
+        </section>
+      </main>
     </div>
   );
-};
-
-export default Hero;
+}

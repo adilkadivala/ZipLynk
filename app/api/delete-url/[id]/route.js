@@ -1,16 +1,16 @@
-const { connectDB } = require("@/db/connection");
-const URL = require("@/models/url");
-const { NextResponse } = require("next/server");
+import { connectDB } from "@/db/connection";
+import URL from "@/models/url";
+import { NextResponse } from "next/server";
 
 export async function DELETE(req, { params }) {
   await connectDB();
 
   try {
-    const { _id } = params;
+    const { id } = await params;
 
-    const deletedUrl = await URL.findByIdAndRemove(_id);
+    const deletedUrl = await URL.deleteOne({ _id: id });
 
-    if (!deletedUrl) {
+    if (!deletedUrl.deletedCount) {
       return NextResponse.json({ error: "URL not found" }, { status: 404 });
     }
 
