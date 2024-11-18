@@ -25,10 +25,19 @@ export const Table = ({ TABLE_HEAD, TABLE_ROWS, className }) => {
         </tr>
       </thead>
       <tbody>
-        {TABLE_ROWS?.map(({ _id, shortId, redirectUrl }) => {
+        {TABLE_ROWS?.map(({ _id, shortId, redirectUrl, faviconUrl }) => {
           return (
             <tr key={_id} className="border border-slate-300 text-left">
-              <td>
+              <td className="flex gap-1">
+                {faviconUrl && (
+                  <img
+                    src={faviconUrl}
+                    alt="Favicon"
+                    width={16}
+                    height={16}
+                    onError={(e) => (e.target.style.display = "none")}
+                  />
+                )}
                 <Link
                   href={`http://localhost:3000/api/redirect/${shortId}`}
                   target="_blank"

@@ -8,6 +8,7 @@ import { Table } from "@/components/ui/table";
 
 // hooks
 import { Fetch } from "../../hooks/getNetwork";
+import { getBaseDomain, getFaviconUrl } from "@/utils/urlUtils";
 
 const Dashboard = () => {
   // hooks
@@ -19,8 +20,12 @@ const Dashboard = () => {
 
   const getUrls = async () => {
     const data = await getData("/api/get-all-urls");
-    console.log(data);
-    setUrl(data.urls);
+    const formattedData = data.urls.map((item) => ({
+      ...item,
+      redirectUrl: getBaseDomain(item.redirectUrl),
+      faviconUrl: getFaviconUrl(item.redirectUrl),
+    }));
+    setUrl(formattedData);
   };
 
   useEffect(() => {
