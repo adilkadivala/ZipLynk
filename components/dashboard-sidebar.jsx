@@ -6,8 +6,8 @@ import { ChartLine, House, LogOut } from "lucide-react";
 
 const sidebarPages = [
   {
-    href: "/dashboard",
-    label: "Dashboard",
+    href: "/console",
+    label: "console",
     icon: <House />,
   },
   {

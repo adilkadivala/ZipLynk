@@ -47,7 +47,7 @@ export const Navbar = () => {
 
             <Link
               className="font-medium text-sm rounded-lg border border-gray-200 py-[7px] px-2.5 inline-flex items-center"
-              href="/dashboard"
+              href="/console"
             >
               {user ? "Console" : "Login"}
             </Link>

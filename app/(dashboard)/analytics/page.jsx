@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "@/components/ui/table";
 
 // hooks
-import { Fetch } from "../../hooks/getNetwork";
+import { Fetch } from "@/hooks/getNetwork";
 import { getBaseDomain, getFaviconUrl } from "@/utils/urlUtils";
 
 const Dashboard = () => {
