@@ -19,9 +19,7 @@ const Home = () => {
   const [longUrl, setLongUrl] = useState("");
   const [generatedShortUrl, setGeneratedShortUrl] = useState("");
   const [allUrls, setAllUrls] = useState<UrlData[]>([]);
-
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
-  console.log(analytics);
 
   // Base API URL (adjust if needed)
   const API_BASE = "http://localhost:8080";
