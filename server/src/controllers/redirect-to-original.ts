@@ -5,8 +5,6 @@ export const redirect = async (req: Request, res: Response): Promise<void> => {
   try {
     const { shortId } = req.params;
 
-    console.log("ShortId:", shortId);
-
     const existingUrl = await prisma.url.findUnique({
       where: { shortId },
     });
