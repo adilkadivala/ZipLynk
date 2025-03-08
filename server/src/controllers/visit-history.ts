@@ -8,8 +8,6 @@ export const visitHistory = async (
   try {
     const { shortId } = req.params;
 
-    console.log(shortId, "analytics shortid");
-
     const result = await prisma.url.findUnique({
       where: { shortId },
       include: { visitHistory: true },

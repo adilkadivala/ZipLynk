@@ -4,7 +4,6 @@ import { prisma } from "../lib/db";
 export const deleteUrl = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    console.log(id, "urlid for delete");
 
     await prisma.visitHistory.deleteMany({
       where: { urlId: id },

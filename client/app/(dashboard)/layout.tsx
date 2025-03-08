@@ -1,18 +1,9 @@
-import "@/app/globals.css";
-import { DashboardMain } from "@/components/dashboard-main";
-import { DashboardNav } from "@/components/dashboard-nav";
-import { DashboardSideBar } from "@/components/dashboard-sidebar";
+type Props = {
+  children: React.ReactNode;
+};
 
-export default function DashboardLayout({ children }) {
-  return (
-    <>
-      <div className="relative w-full h-screen flex flex-col">
-        <DashboardNav />
-        <div className="flex flex-1 overflow-hidden">
-          <DashboardSideBar />
-          <DashboardMain>{children}</DashboardMain>
-        </div>
-      </div>
-    </>
-  );
-}
+const DashboardLayout = ({ children }: Props) => {
+  return <main className="px-3 lg:px-14">{children}</main>;
+};
+
+export default DashboardLayout;
