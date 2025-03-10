@@ -4,7 +4,7 @@ export function Features() {
   return (
     <section
       id="features"
-      className="w-full py-12 md:py-24 lg:py-32 bg-muted/50"
+      className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 dark:bg-secondary/10"
     >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -22,7 +22,7 @@ export function Features() {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+          <div className="flex flex-col items-center space-y-4 rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-md">
             <div className="rounded-full bg-primary/10 p-3">
               <Link2 className="h-6 w-6 text-primary" />
             </div>
@@ -31,7 +31,7 @@ export function Features() {
               Create branded, memorable links that reflect your identity.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+          <div className="flex flex-col items-center space-y-4 rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-md">
             <div className="rounded-full bg-primary/10 p-3">
               <BarChart3 className="h-6 w-6 text-primary" />
             </div>
@@ -40,7 +40,7 @@ export function Features() {
               Track clicks, geographic data, and referrers in real-time.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+          <div className="flex flex-col items-center space-y-4 rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-md">
             <div className="rounded-full bg-primary/10 p-3">
               <Shield className="h-6 w-6 text-primary" />
             </div>

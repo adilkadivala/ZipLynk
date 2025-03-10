@@ -11,7 +11,16 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000/",
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    maxAge: 600,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+
+  })
+);
 app.use(router);
 
 const PORT = process.env.SERVER_PORT || 8000;

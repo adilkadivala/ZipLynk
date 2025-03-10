@@ -3,91 +3,114 @@
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import { Zap } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "next-themes";
+import { Link2, Menu, X } from "lucide-react";
 
 export function Navbar() {
+  const { resolvedTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-16 items-center px-4 md:px-6">
         {/* Logo - Left */}
-        <div className="flex gap-2 items-center text-xl font-bold">
-          <Zap className="h-6 w-6 text-primary" />
+        <Link href="/" className="flex gap-2 items-center text-xl font-bold">
+          <div className="rounded-full bg-primary/10 p-1.5">
+            {resolvedTheme === "dark" ? (
+              <Link2 className="h-5 w-5 text-primary" color="#fff" />
+            ) : (
+              <Link2 className="h-5 w-5 text-primary" />
+            )}
+          </div>
           <span>ZipLynk</span>
+        </Link>
+
+        {/* Center the navigation with flex-1 and justify-center */}
+        <div className="flex-1 flex justify-center">
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link
+              href="#how-it-works"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              How It Works
+            </Link>
+            <Link
+              href="#features"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Features
+            </Link>
+            <Link
+              href="#join"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Join
+            </Link>
+          </nav>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Right Side */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            href="/console"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Log in
+          </Link>
+          <ModeToggle />
+        </div>
+
+        {/* Mobile Menu Button */}
         <button
           className="ml-auto md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6"
-          >
-            {isMenuOpen ? (
-              <path d="M18 6 6 18M6 6l12 12" />
-            ) : (
-              <path d="M4 12h16M4 6h16M4 18h16" />
-            )}
-          </svg>
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
-
-        {/* Navigation Links - Center */}
-        <nav
-          className={`absolute md:static top-16 left-0 right-0 bg-background md:bg-transparent border-b md:border-0 ${
-            isMenuOpen ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row items-center md:mx-auto space-y-4 md:space-y-0 space-x-0 md:space-x-6 py-4 md:py-0`}
-        >
-          <Link
-            href="#features"
-            className="text-sm font-medium transition-colors hover:text-primary"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Features
-          </Link>
-          <Link
-            href="#how-it-works"
-            className="text-sm font-medium transition-colors hover:text-primary"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            How It Works
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium transition-colors hover:text-primary"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            About
-          </Link>
-        </nav>
-
-        {/* Login & Theme Toggle - Right */}
-        <div className="hidden md:flex items-center space-x-4 ml-auto">
-          <Link href="/console">Log in</Link>
-          <Button size="sm">Sign up</Button>
-          <ModeToggle />
-        </div>
       </div>
 
-      {/* Mobile login buttons - shown when menu is open */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden flex justify-center gap-4 pb-4 border-b bg-background">
-          <Button variant="outline" size="sm">
-            Log in
-          </Button>
-          <Button size="sm">Sign up</Button>
-          <ModeToggle />
+        <div className="md:hidden border-b bg-background">
+          <nav className="flex flex-col space-y-4 p-4">
+            <Link
+              href="#how-it-works"
+              className="text-sm font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              How It Works
+            </Link>
+            <Link
+              href="#features"
+              className="text-sm font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Features
+            </Link>
+            <Link
+              href="#join"
+              className="text-sm font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Join
+            </Link>
+            <div className="flex flex-col space-y-2 pt-4 border-t">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="justify-start"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Log in
+              </Button>
+            </div>
+          </nav>
         </div>
       )}
     </header>
