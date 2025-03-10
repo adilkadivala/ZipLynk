@@ -1,7 +1,12 @@
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+    <section
+      id="how-it-works"
+      className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      {/* Subtle geometric background */}
+
+      <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
@@ -16,7 +21,7 @@ export function HowItWorks() {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-3">
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col items-center space-y-4 p-6 rounded-lg border bg-card transition-all hover:shadow-md">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-primary-foreground">
               1
             </div>
@@ -25,7 +30,7 @@ export function HowItWorks() {
               Enter your long URL into the input field.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col items-center space-y-4 p-6 rounded-lg border bg-card transition-all hover:shadow-md">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-primary-foreground">
               2
             </div>
@@ -34,7 +39,7 @@ export function HowItWorks() {
               Our system instantly creates a short, memorable link.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col items-center space-y-4 p-6 rounded-lg border bg-card transition-all hover:shadow-md">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-primary-foreground">
               3
             </div>
