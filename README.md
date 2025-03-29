@@ -23,7 +23,7 @@ ZipLynk is a URL shortener service built using **Next (Client)** and **Express +
 ## **📂 Project Structure**
 ```
 ZipLynk/
-│── client/       # React frontend
+│── client/       # Next frontend
 │── server/       # Express backend with Prisma ORM
 │── README.md     # Project documentation
 ```
@@ -48,7 +48,7 @@ pnpm run dev  # or npm start
 ```
 ### **🔹 Environment Variables (`client/.env` file)**
 ```env
-VITE_API_BASE=http://localhost:8080  # Backend API URL
+API_BASE=http://localhost:3000  # Backend API URL
 ```
 
 ---
